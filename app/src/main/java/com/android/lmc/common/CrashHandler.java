@@ -9,6 +9,7 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import com.android.lmc.MainActivity;
+import com.android.lmc.widget.ToastHelper;
 
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private Context mContext;
@@ -60,7 +61,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             @Override
             public void run() {
                 Looper.prepare();
-                Toast.makeText(mContext, "很抱歉,程序出现异常,即将重启.", Toast.LENGTH_SHORT).show();
+                ToastHelper.show("很抱歉,程序出现异常,即将重启");
                 Looper.loop();
             }
         }.start();

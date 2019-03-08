@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.android.lmc.service.OtherProgressService;
+import com.android.lmc.widget.ToastHelper;
 
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class HelloApplication extends Application {
             CrashHandler.getInstance().init(this);
             startService(new Intent(HelloApplication.this, OtherProgressService.class));
             watchActivity();
+            ToastHelper.getInstance().init(this);
         }
     }
 
