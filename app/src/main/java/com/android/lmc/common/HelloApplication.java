@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.android.lmc.service.OtherProgressService;
+import com.android.lmc.tool.LogHelper;
 import com.android.lmc.widget.ToastHelper;
+import com.squareup.leakcanary.LeakCanary;
 
 import java.util.List;
 
@@ -33,12 +35,15 @@ public class HelloApplication extends Application {
     public void onCreate(){
         super.onCreate();
         if(shouldInit()) {
-            Log.d(Tag, "执行app初始化");
             mInstance = this;
             CrashHandler.getInstance().init(this);
             startService(new Intent(HelloApplication.this, OtherProgressService.class));
             watchActivity();
             ToastHelper.getInstance().init(this);
+            LogHelper.init();
+            if (!LeakCanary.isInAnalyzerProcess(this)) {
+                LeakCanary.install(this);
+            }
         }
     }
 
