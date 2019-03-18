@@ -12,6 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        flavorDimensions "versionCode"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -24,6 +25,19 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    productFlavors {
+        //官方包
+        official {
+            manifestPlaceholders = [CHANNEL_NAME_VALUE: "官方"]
+        }
+        xiaomi {
+            manifestPlaceholders = [CHANNEL_NAME_VALUE: "小米"]
+        }
+        huawei {
+            manifestPlaceholders = [CHANNEL_NAME_VALUE: "华为"]
+        }
     }
 }
 
@@ -44,5 +58,8 @@ dependencies {
     //内存泄漏
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+
+    implementation "android.arch.lifecycle:runtime:1.1.1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
 
 }
