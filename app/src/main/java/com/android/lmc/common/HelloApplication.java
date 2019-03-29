@@ -36,7 +36,7 @@ public class HelloApplication extends Application {
         super.onCreate();
         if(shouldInit()) {
             mInstance = this;
-            CrashHandler.getInstance().init(this);
+//            CrashHandler.getInstance().init(this);
             startService(new Intent(HelloApplication.this, OtherProgressService.class));
             watchActivity();
             ToastHelper.getInstance().init(this);
