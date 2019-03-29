@@ -26,6 +26,7 @@
         <activity android:name=".activity.CrashActivity" />
         <activity android:name=".activity.JetpackActivity" />
         <activity android:name=".activity.MultiBuildActivity" />
+        <activity android:name=".activity.ThreadActivity" />
     </application>
 
 </manifest>
